@@ -25,10 +25,10 @@ export default function RegistrationSteps() {
       title: '📋 Note Course Details & Make Payment',
       icon: '💳',
       content: (
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-700">Course Details</h3>
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <ul className="space-y-2 text-gray-700">
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-orange-700">Course Details</h3>
+          <div className="bg-white p-3 rounded-lg shadow-sm">
+            <ul className="space-y-2 text-gray-700 text-sm">
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">✓</span>
                 <span><strong>Course Duration:</strong> 30-Day Online Course + 3-Day Bootcamp (Optional)</span>
@@ -47,7 +47,7 @@ export default function RegistrationSteps() {
               </li>
             </ul>
           </div>
-          <p className="text-sm text-gray-600 italic">
+          <p className="text-xs text-gray-600 italic">
             Note: Please save your payment confirmation for future reference.
           </p>
         </div>
@@ -58,10 +58,10 @@ export default function RegistrationSteps() {
       title: '💡 Follow Payment Instructions',
       icon: '📝',
       content: (
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-gray-700">Step-by-Step Payment Guide</h3>
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <ol className="space-y-3 text-gray-700 list-decimal list-inside">
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-gray-700">Step-by-Step Payment Guide</h3>
+          <div className="bg-white p-3 rounded-lg shadow-sm">
+            <ol className="space-y-2 text-gray-700 text-sm list-decimal list-inside">
               <li className="font-medium">
                 Click on the payment link received via email
               </li>
@@ -79,8 +79,8 @@ export default function RegistrationSteps() {
               </li>
             </ol>
           </div>
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-            <p className="text-sm text-yellow-800">
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3">
+            <p className="text-xs text-yellow-800">
               <strong>⚠️ Important:</strong> Do not close the payment window until you receive a confirmation message.
             </p>
           </div>
@@ -92,14 +92,14 @@ export default function RegistrationSteps() {
       title: '✅ Complete Registration Form',
       icon: '📄',
       content: (
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-700">Final Step - Registration</h3>
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <p className="text-gray-700 mb-4">
+        <div className="space-y-3">
+          <h3 className="text-lg font-semibold text-orange-700">Final Step - Registration</h3>
+          <div className="bg-white p-3 rounded-lg shadow-sm">
+            <p className="text-gray-700 mb-3 text-sm">
               Please fill out the registration form with your details.
               You will receive a payment link via email after submission.
             </p>
-            <ul className="space-y-2 text-gray-700 mb-6">
+            <ul className="space-y-2 text-gray-700 mb-4 text-sm">
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">•</span>
                 <span>Full Name (as per documents)</span>
@@ -119,13 +119,13 @@ export default function RegistrationSteps() {
             </ul>
             <button
               onClick={openRegistrationForm}
-              className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-orange-600 hover:to-orange-700"
+              className="w-full px-5 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-orange-600 hover:to-orange-700"
             >
               🚀 Open Registration Form
             </button>
           </div>
-          <div className="bg-orange-50 border-l-4 border-orange-400 p-4">
-            <p className="text-sm text-orange-800">
+          <div className="bg-orange-50 border-l-4 border-orange-400 p-3">
+            <p className="text-xs text-orange-800">
               <strong>✨ Note:</strong> After submission, you'll receive an email with payment instructions within 5 minutes.
             </p>
           </div>
@@ -135,14 +135,14 @@ export default function RegistrationSteps() {
   ];
 
   return (
-    <section id="registration-steps" className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section id="registration-steps" className="py-12 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
             Registration Steps
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base text-gray-600">
             Follow these simple steps to complete your registration
           </p>
         </div>
@@ -157,15 +157,15 @@ export default function RegistrationSteps() {
               {/* Accordion Header */}
               <button
                 onClick={() => toggleStep(step.id)}
-                className={`w-full px-6 py-5 flex items-center justify-between transition-all duration-300 ${
+                className={`w-full px-5 py-4 flex items-center justify-between transition-all duration-300 ${
                   openStep === step.id
                     ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white'
                     : 'bg-white text-gray-800 hover:bg-gray-50'
                 }`}
               >
-                <div className="flex items-center space-x-4">
-                  <span className="text-3xl">{step.icon}</span>
-                  <span className="text-lg font-semibold text-left">{step.title}</span>
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">{step.icon}</span>
+                  <span className="text-base font-semibold text-left">{step.title}</span>
                 </div>
                 <svg
                   className={`w-6 h-6 transition-transform duration-300 ${
@@ -190,7 +190,7 @@ export default function RegistrationSteps() {
                     : 'max-h-0 opacity-0 overflow-hidden'
                 }`}
               >
-                <div className="px-6 py-6 bg-gray-50 border-t border-gray-200">
+                <div className="px-5 py-5 bg-gray-50 border-t border-gray-200">
                   {step.content}
                 </div>
               </div>
@@ -199,11 +199,11 @@ export default function RegistrationSteps() {
         </div>
 
         {/* Help Section */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-600 mb-4">Need help with registration?</p>
+        <div className="mt-8 text-center">
+          <p className="text-gray-600 mb-3 text-sm">Need help with registration?</p>
           <a
             href="mailto:iitk.applieddatascience@gmail.com"
-            className="inline-block px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="inline-block px-5 py-2 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm"
           >
             📞 Contact Support
           </a>
