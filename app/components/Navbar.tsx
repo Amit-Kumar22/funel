@@ -22,13 +22,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="sticky top-0 z-50 bg-white shadow-lg">
+      <div className="w-full">
+        <div className="flex justify-between items-center h-16 pr-4 sm:pr-6 lg:pr-8">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-white text-2xl font-bold hover:scale-105 transition-transform duration-200">
-              🎓 HiProTech
+          <div className="flex-shrink-0 pl-2">
+            <Link href="/" className="hover:scale-105 transition-transform duration-200">
+              <img 
+                src="/hipro.jpeg" 
+                alt="HiProTech" 
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 
@@ -41,8 +45,8 @@ export default function Navbar() {
                   onClick={item.onClick}
                   className={`px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
                     item.special
-                      ? 'bg-white text-gray-900 hover:bg-gray-100 hover:text-orange-600 shadow-md'
-                      : 'text-white hover:bg-white hover:bg-opacity-20 hover:text-gray-900'
+                      ? 'bg-orange-600 text-white hover:bg-orange-700 shadow-md'
+                      : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'
                   }`}
                 >
                   {item.name}
@@ -53,8 +57,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
                     item.special
-                      ? 'bg-white text-gray-900 hover:bg-gray-100 hover:text-orange-600 shadow-md'
-                      : 'text-white hover:bg-white hover:bg-opacity-20 hover:text-gray-900'
+                      ? 'bg-orange-600 text-white hover:bg-orange-700 shadow-md'
+                      : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'
                   }`}
                 >
                   {item.name}
@@ -67,7 +71,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-gray-200 focus:outline-none transition-transform duration-200 hover:scale-110"
+              className="text-gray-700 hover:text-orange-600 focus:outline-none transition-transform duration-200 hover:scale-110"
             >
               <svg
                 className="h-6 w-6"
@@ -91,7 +95,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-white bg-opacity-10 backdrop-blur-sm">
+        <div className="md:hidden bg-gray-50 border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item, index) => (
               item.onClick ? (
@@ -100,8 +104,8 @@ export default function Navbar() {
                   onClick={item.onClick}
                   className={`block w-full text-left px-3 py-2 rounded-md font-medium transition-all duration-200 ${
                     item.special
-                      ? 'bg-white text-gray-900 hover:bg-gray-100 hover:text-orange-600'
-                      : 'text-white hover:bg-white hover:bg-opacity-20 hover:text-gray-900'
+                      ? 'bg-orange-600 text-white hover:bg-orange-700'
+                      : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'
                   }`}
                 >
                   {item.name}
@@ -113,8 +117,8 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-2 rounded-md font-medium transition-all duration-200 ${
                     item.special
-                      ? 'bg-white text-gray-900 hover:bg-gray-100 hover:text-orange-600'
-                      : 'text-white hover:bg-white hover:bg-opacity-20 hover:text-gray-900'
+                      ? 'bg-orange-600 text-white hover:bg-orange-700'
+                      : 'text-gray-700 hover:bg-orange-100 hover:text-orange-600'
                   }`}
                 >
                   {item.name}

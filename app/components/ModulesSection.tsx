@@ -87,7 +87,7 @@ export default function ModulesSection() {
   };
 
   return (
-    <section className="py-12 bg-gray-900 text-white">
+    <section className="py-12 bg-white text-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -95,7 +95,7 @@ export default function ModulesSection() {
             Course Curriculum
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto mb-4"></div>
-          <p className="text-base text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
             Comprehensive training modules designed by industry experts
           </p>
         </div>
@@ -113,7 +113,7 @@ export default function ModulesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold mb-1">Robotics Program</h3>
+                <h3 className="text-xl font-bold mb-1 text-white">Robotics Program</h3>
                 <p className="text-sm text-gray-200">
                   8 comprehensive modules covering all aspects of robotics
                 </p>
@@ -125,13 +125,13 @@ export default function ModulesSection() {
               {roboticsModules.map((module, index) => (
                 <div
                   key={index}
-                  className="bg-gray-800 p-4 rounded-lg border-l-4 border-orange-500 hover:bg-gray-750 transition-all duration-300 hover:scale-[1.02]"
+                  className="bg-gray-50 p-4 rounded-lg border-l-4 border-orange-500 hover:bg-gray-100 transition-all duration-300 hover:scale-[1.02] shadow-sm"
                 >
                   <div className="text-orange-500 font-bold text-xs mb-1">
                     {module.number}
                   </div>
-                  <h4 className="text-sm font-bold mb-1">{module.title}</h4>
-                  <p className="text-gray-400 text-xs">{module.description}</p>
+                  <h4 className="text-sm font-bold mb-1 text-gray-900">{module.title}</h4>
+                  <p className="text-gray-600 text-xs">{module.description}</p>
                 </div>
               ))}
             </div>
@@ -146,13 +146,13 @@ export default function ModulesSection() {
               {droneModules.map((module, index) => (
                 <div
                   key={index}
-                  className="bg-gray-800 p-4 rounded-lg border-l-4 border-amber-500 hover:bg-gray-750 transition-all duration-300 hover:scale-[1.02]"
+                  className="bg-gray-50 p-4 rounded-lg border-l-4 border-amber-500 hover:bg-gray-100 transition-all duration-300 hover:scale-[1.02] shadow-sm"
                 >
                   <div className="text-amber-500 font-bold text-xs mb-1">
                     {module.number}
                   </div>
-                  <h4 className="text-sm font-bold mb-1">{module.title}</h4>
-                  <p className="text-gray-400 text-xs">{module.description}</p>
+                  <h4 className="text-sm font-bold mb-1 text-gray-900">{module.title}</h4>
+                  <p className="text-gray-600 text-xs">{module.description}</p>
                 </div>
               ))}
             </div>
@@ -167,8 +167,8 @@ export default function ModulesSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold mb-1">Drone Program</h3>
-                <p className="text-sm text-gray-200">
+                <h3 className="text-xl font-bold mb-1 text-white">Drone Program</h3>
+                <p className="text-sm text-white">
                   6 specialized modules for mastering drone technology
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function ModulesSection() {
             <h3 className="text-xl font-bold mb-2">
               Ready to Start Your Journey?
             </h3>
-            <p className="text-base mb-4 text-white/90">
+            <p className="text-base mb-4 text-white">
               Join thousands of students mastering robotics and drone technology
             </p>
             <button
