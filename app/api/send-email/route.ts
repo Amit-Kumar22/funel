@@ -43,13 +43,13 @@ export async function POST(request: Request) {
     });
 
     // Get payment link from environment variable
-    const paymentLink = process.env.PAYMENT_LINK || 'https://your-payment-gateway.com/pay';
+    const paymentLink = process.env.PAYMENT_LINK || 'https://nielitpatnaonline.in/hiprotech/';
 
     // Course display name
     const courseNames: { [key: string]: string } = {
-      'online-only': '30-Day Online Course Only',
-      'online-bootcamp': '30-Day Online + 3-Day Bootcamp at IIT Kanpur',
-      'bootcamp-only': '3-Day Bootcamp Only (at IIT Kanpur)',
+      'online-only': '30-Day Online Robotics & Drones Training',
+      'online-bootcamp': '30-Day Online + 3-Day Hands-on Workshop at NIELIT Patna',
+      'bootcamp-only': '3-Day Hands-on Workshop Only (at NIELIT Patna)',
     };
     const courseName = course ? courseNames[course] || course : 'Selected Course';
 
@@ -60,113 +60,316 @@ export async function POST(request: Request) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Confirmation</title>
+  <title>Welcome to HiProTech - Registration Confirmed</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 600px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      color: #333333;
+      max-width: 650px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0;
+      background-color: #f4f7fa;
+    }
+    .email-container {
+      background-color: #ffffff;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
     .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 30px;
+      background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
+      color: #ffffff;
+      padding: 40px 30px;
       text-align: center;
-      border-radius: 10px 10px 0 0;
+    }
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .header p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.95;
     }
     .content {
-      background: #f9f9f9;
-      padding: 30px;
-      border-radius: 0 0 10px 10px;
+      padding: 40px 35px;
+      background-color: #ffffff;
     }
-    .button {
+    .greeting {
+      font-size: 18px;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+    .greeting strong {
+      color: #ea580c;
+      font-size: 20px;
+    }
+    .message {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .cta-button {
       display: inline-block;
-      padding: 15px 30px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      padding: 18px 45px;
+      background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+      color: #ffffff !important;
       text-decoration: none;
       border-radius: 50px;
-      margin: 20px 0;
-      font-weight: bold;
+      margin: 30px 0;
+      font-weight: 700;
+      font-size: 17px;
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.3);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+    }
+    .link-highlight {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 20px 30px;
+      border: 3px solid #f59e0b;
+      border-radius: 12px;
+      margin: 25px 0;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+    .link-highlight p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #92400e;
+    }
+    .link-highlight a {
+      color: #ea580c;
+      font-size: 24px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .link-highlight a:hover {
+      text-decoration: underline;
     }
     .info-box {
-      background: white;
-      padding: 20px;
-      border-left: 4px solid #667eea;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 25px;
+      border-left: 5px solid #f59e0b;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+    .info-box h3 {
+      margin: 0 0 15px 0;
+      color: #92400e;
+      font-size: 18px;
+    }
+    .info-box p, .info-box ul {
+      color: #78350f;
+      margin: 10px 0;
+      font-size: 15px;
+    }
+    .info-box ul {
+      padding-left: 20px;
+    }
+    .info-box li {
+      margin: 8px 0;
+    }
+    .course-badge {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: #ffffff;
+      padding: 15px 20px;
+      border-radius: 8px;
       margin: 20px 0;
-      border-radius: 5px;
+      text-align: center;
+    }
+    .course-badge h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    .course-badge p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+      margin: 30px 0;
+    }
+    .important-note {
+      background-color: #fef2f2;
+      border-left: 5px solid #ef4444;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+    .important-note h4 {
+      margin: 0 0 12px 0;
+      color: #991b1b;
+      font-size: 17px;
+    }
+    .important-note ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #7f1d1d;
+    }
+    .important-note li {
+      margin: 8px 0;
+      font-size: 14px;
     }
     .footer {
+      background-color: #f9fafb;
+      padding: 30px 35px;
       text-align: center;
+      border-top: 1px solid #e5e7eb;
+    }
+    .footer p {
+      margin: 8px 0;
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .footer strong {
+      color: #374151;
+      font-size: 14px;
+    }
+    .signature {
       margin-top: 30px;
       padding-top: 20px;
-      border-top: 1px solid #ddd;
-      color: #666;
-      font-size: 12px;
+      border-top: 2px solid #e5e7eb;
+      text-align: left;
+    }
+    .signature p {
+      margin: 5px 0;
+      color: #374151;
+    }
+    .signature strong {
+      color: #ea580c;
+      font-size: 17px;
+    }
+    .signature small {
+      color: #6b7280;
+      font-size: 13px;
+    }
+    @media only screen and (max-width: 600px) {
+      .content, .footer {
+        padding: 25px 20px;
+      }
+      .header h1 {
+        font-size: 24px;
+      }
+      .cta-button {
+        padding: 15px 35px;
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>🎉 Registration Successful!</h1>
-  </div>
-  <div class="content">
-    <p>Dear <strong>${name}</strong>,</p>
-    
-    <p>Thank you for registering with FunnelPro! We're excited to have you on board.</p>
-    
-    <div class="info-box">
-      <h3>📋 Next Steps:</h3>
-      <ol>
-        <li>Click the payment button below to complete your registration</li>
-        <li>Complete the payment using your preferred method</li>
-        <li>Save your payment confirmation receipt</li>
-        <li>You'll receive course access within 24 hours</li>
-      </ol>
+  <div class="email-container">
+    <div class="header">
+      <h1>🎉 Welcome to HiProTech!</h1>
+      <p>Your Registration Has Been Confirmed Successfully</p>
     </div>
     
-    <center>
-      <a href="${paymentLink}" class="button">
-        💳 Proceed to Payment
-      </a>
-    </center>
-    
-    <div class="info-box">
-      <h3>� Your Selected Course:</h3>
-      <p style="font-size: 16px; color: #f97316; font-weight: bold;">${courseName}</p>
+    <div class="content">
+      <p class="greeting">Dear <strong>${name}</strong>,</p>
+      
+      <p class="message">
+        Congratulations and welcome to HiProTech - Advanced Robotics & Drones Training program in collaboration with NIELIT Patna! 
+        We are thrilled to have you join our community of learners and future robotics & drone technology professionals.
+      </p>
+      
+      <p class="message">
+        Your registration has been successfully received. We are excited to embark on this transformative learning journey with you. 
+        This program will equip you with cutting-edge skills in robotics, drone technology, automation, and practical hands-on experience.
+      </p>
+      
+      <div class="course-badge">
+        <h3>📚 Your Selected Program</h3>
+        <p>${courseName}</p>
+      </div>
+      
+      <div class="info-box">
+        <h3>� Next Steps to Get Started</h3>
+        <ul>
+          <li><strong>Step 1:</strong> Click the button below to access the program portal and complete your enrollment</li>
+          <li><strong>Step 2:</strong> Review the program curriculum and schedule</li>
+          <li><strong>Step 3:</strong> Complete the payment process to secure your seat</li>
+          <li><strong>Step 4:</strong> Get access to the learning platform and course materials</li>
+        </ul>
+      </div>
+      
+      <center>
+        <a href="${paymentLink}" class="cta-button">
+          🎓 Access Program Portal & Continue
+        </a>
+      </center>
+      
+      <div class="link-highlight">
+        <p>🔗 Program Portal Link:</p>
+        <a href="${paymentLink}" target="_blank">nielitpatnaonline.in/hiprotech</a>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="info-box">
+        <h3>🎯 What You'll Gain From This Program</h3>
+        <ul>
+          <li>Industry-relevant curriculum designed by NIELIT Patna experts</li>
+          <li>Hands-on training with real drones and robotics kits</li>
+          <li>Live interactive sessions with experienced instructors</li>
+          <li>Certification from NIELIT Patna upon successful completion</li>
+          <li>Practical drone flying and robotics assembly experience</li>
+          <li>Career guidance in robotics and drone technology fields</li>
+          <li>Access to exclusive learning resources and community</li>
+        </ul>
+      </div>
+      
+      <div class="important-note">
+        <h4>⚠️ Important Information</h4>
+        <ul>
+          <li>Please complete your enrollment within 48 hours to confirm your seat</li>
+          <li>Limited seats available - secure your spot now</li>
+          <li>Keep your transaction details safe for future reference</li>
+          <li>Check your email regularly for updates and course materials</li>
+          <li>For any queries, contact our support team immediately</li>
+        </ul>
+      </div>
+      
+      <p class="message">
+        We are committed to providing you with an exceptional learning experience. Should you have any questions or need assistance, 
+        our dedicated support team is always ready to help you.
+      </p>
+      
+      <div class="signature">
+        <p>Warm regards,</p>
+        <p><strong>The HiProTech Team</strong></p>
+        <p><small>Advanced Robotics & Drones Training Program</small></p>
+        <p><small>In Collaboration with NIELIT Patna</small></p>
+      </div>
     </div>
     
-    <div class="info-box">
-      <h3>�💰 Payment Details:</h3>
-      <ul>
-        <li><strong>Course Starting:</strong> 15th November 2025</li>
-        <li><strong>Payment Methods:</strong> Credit/Debit Card, UPI, Net Banking</li>
-        <li><strong>Installment Options:</strong> Contact support for details</li>
-      </ul>
+    <div class="footer">
+      <p><strong>HiProTech - Excellence in Robotics & Drones Training</strong></p>
+      <p>© 2025 HiProTech. All rights reserved.</p>
+      <p style="margin-top: 15px;">
+        This email was sent to <strong>${email}</strong> because you registered for our Robotics & Drones Training program.
+      </p>
+      <p>
+        If you did not register for this program, please disregard this email or contact us immediately.
+      </p>
+      <p style="margin-top: 15px; font-size: 12px;">
+        By continuing with the enrollment, you agree to our Terms & Conditions and Privacy Policy.
+      </p>
     </div>
-    
-    <p><strong>⚠️ Important Notes:</strong></p>
-    <ul>
-      <li>This link is valid for 48 hours</li>
-      <li>Do not share this link with anyone</li>
-      <li>Save your transaction ID for future reference</li>
-      <li>Contact support if you face any issues</li>
-    </ul>
-    
-    <p>If you have any questions, feel free to reach out to our support team.</p>
-    
-    <p>Best regards,<br>
-    <strong>The HiProTech Team</strong><br>
-    <small>Applied Data Science & Machine Intelligence - IIT Kanpur</small></p>
-  </div>
-  
-  <div class="footer">
-    <p>© 2025 HiProTech. All rights reserved.</p>
-    <p>By proceeding with payment, you agree to our Terms & Conditions.</p>
-    <p>If you didn't register for this course, please ignore this email.</p>
   </div>
 </body>
 </html>
@@ -175,13 +378,53 @@ export async function POST(request: Request) {
     // Email options
     const mailOptions = {
       from: {
-        name: 'HiProTech - IIT Kanpur',
+        name: 'HiProTech - NIELIT Patna',
         address: process.env.EMAIL_USER,
       },
       to: email,
-      subject: '✅ Registration Successful - Complete Your Payment',
+      subject: '🎉 Welcome to HiProTech - Robotics & Drones Training Registration Confirmed',
       html: emailHTML,
-      text: `Dear ${name},\n\nThank you for registering with HiProTech!\n\nYour Selected Course: ${courseName}\n\nPlease complete your payment using this link: ${paymentLink}\n\nBest regards,\nThe HiProTech Team`,
+      text: `Dear ${name},
+
+Congratulations and welcome to HiProTech - Advanced Robotics & Drones Training program in collaboration with NIELIT Patna!
+
+Your registration has been successfully confirmed. We are excited to have you join our community of learners and future robotics & drone technology professionals.
+
+Your Selected Program: ${courseName}
+
+NEXT STEPS:
+1. Click the link below to access the program portal
+2. Complete your enrollment process
+3. Review the program curriculum
+4. Secure your seat by completing the payment
+
+🔗 Access Program Portal: ${paymentLink}
+Visit: nielitpatnaonline.in/hiprotech
+
+WHAT YOU'LL GAIN:
+- Industry-relevant curriculum designed by NIELIT Patna experts
+- Hands-on training with real drones and robotics kits
+- Live interactive sessions with experienced instructors
+- NIELIT Patna certification upon completion
+- Practical drone flying and robotics assembly experience
+- Career guidance in robotics and drone technology fields
+
+IMPORTANT NOTES:
+- Complete enrollment within 48 hours to confirm your seat
+- Limited seats available
+- Keep your transaction details safe
+- Check email regularly for updates
+
+For any questions or assistance, feel free to reach out to our support team.
+
+Best regards,
+The HiProTech Team
+Advanced Robotics & Drones Training Program
+In Collaboration with NIELIT Patna
+
+---
+© 2025 HiProTech. All rights reserved.
+This email was sent to ${email} because you registered for our Robotics & Drones Training program.`,
     };
 
     // Send email

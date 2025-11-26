@@ -54,48 +54,49 @@ export async function POST(request: Request) {
       });
     }
 
-    // Trigger email sending (call send-email API) - ALWAYS SEND EMAIL
-    console.log('🔔 Attempting to send email notification...');
-    try {
-      const emailApiUrl = process.env.NEXT_PUBLIC_APP_URL 
-        ? `${process.env.NEXT_PUBLIC_APP_URL}/api/send-email`
-        : 'http://localhost:3000/api/send-email';
-      
-      console.log('Email API URL:', emailApiUrl);
-      
-      const emailResponse = await fetch(emailApiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: user.name,
-          email: user.email,
-          course: user.course,
-        }),
+    // Trigger email sending asynchronously (fire-and-forget for instant response)
+    console.log('🔔 Scheduling email notification (async)...');
+    
+    // Send email in background without waiting (improves response time)
+    const emailApiUrl = process.env.NEXT_PUBLIC_APP_URL 
+      ? `${process.env.NEXT_PUBLIC_APP_URL}/api/send-email`
+      : 'http://localhost:3000/api/send-email';
+    
+    // Fire-and-forget: Don't await this promise
+    fetch(emailApiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        course: user.course,
+      }),
+    })
+      .then(async (emailResponse) => {
+        const emailResult = await emailResponse.json();
+        if (emailResponse.ok) {
+          console.log('✅ Email sent successfully:', emailResult);
+          // Update user to mark email as sent
+          await User.findByIdAndUpdate(user._id, { emailSent: true });
+        } else {
+          console.error('❌ Email API returned error:', emailResult);
+        }
+      })
+      .catch((emailError) => {
+        console.error('❌ Error sending email:', emailError);
       });
 
-      const emailResult = await emailResponse.json();
-      console.log('Email API response:', emailResult);
+    console.log('📧 Email will be sent in background');
 
-      if (emailResponse.ok) {
-        console.log('✅ Email sent successfully');
-        // Update user to mark email as sent
-        await User.findByIdAndUpdate(user._id, { emailSent: true });
-      } else {
-        console.error('❌ Email API returned error:', emailResult);
-      }
-    } catch (emailError) {
-      console.error('❌ Error calling email API:', emailError);
-      // Continue even if email fails - user is still registered
-    }
-
+    // Return immediately without waiting for email
     return NextResponse.json(
       {
         success: true,
         message: existingUser 
-          ? 'Payment link resent! Check your email.' 
-          : 'Registration successful! Check your email for payment link.',
+          ? 'Registration updated! Check your email for program details.' 
+          : 'Registration successful! Check your email for program access link.',
         data: {
           id: user._id,
           name: user.name,

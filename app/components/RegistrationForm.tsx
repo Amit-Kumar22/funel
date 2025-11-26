@@ -137,7 +137,7 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
                 <span className="text-2xl mr-3">✅</span>
                 <div>
                   <p className="font-semibold text-green-800">Registration Successful!</p>
-                  <p className="text-sm text-green-700">Check your email for payment instructions.</p>
+                  <p className="text-sm text-green-700">Check your email for enrollment instructions and program access link.</p>
                 </div>
               </div>
             </div>
@@ -221,16 +221,16 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all duration-200 bg-white text-gray-900"
             >
               <option value="" className="text-gray-500">-- Select a course --</option>
-              <option value="online-only" className="text-gray-900">30-Day Online Course Only</option>
-              <option value="online-bootcamp" className="text-gray-900">30-Day Online + 3-Day Bootcamp at IIT Kanpur</option>
-              <option value="bootcamp-only" className="text-gray-900">3-Day Bootcamp Only (at IIT Kanpur)</option>
+              <option value="online-only" className="text-gray-900">30-Day Online Robotics & Drones Training</option>
+              <option value="online-bootcamp" className="text-gray-900">30-Day Online + 3-Day Hands-on Workshop at NIELIT Patna</option>
+              <option value="bootcamp-only" className="text-gray-900">3-Day Hands-on Workshop Only (at NIELIT Patna)</option>
             </select>
           </div>
 
           {/* Info Box */}
           <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
             <p className="text-sm text-orange-800">
-              <strong>📧 Note:</strong> After submission, you'll receive a payment link via email within 5 minutes.
+              <strong>📧 Note:</strong> After submission, you'll receive program details and enrollment link via email within 5 minutes.
             </p>
           </div>
 
