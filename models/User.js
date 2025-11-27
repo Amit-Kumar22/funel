@@ -23,9 +23,19 @@ const UserSchema = new mongoose.Schema(
       required: [true, 'Please provide a phone number'],
       trim: true,
     },
-    course: {
+    city: {
       type: String,
-      required: [true, 'Please select a course'],
+      required: [true, 'Please provide a city'],
+      trim: true,
+    },
+    college: {
+      type: String,
+      required: [true, 'Please provide a college'],
+      trim: true,
+    },
+    university: {
+      type: String,
+      required: [true, 'Please provide a university'],
       trim: true,
     },
     paymentStatus: {

@@ -14,10 +14,10 @@ export async function POST(request: Request) {
 
     // Parse request body
     const body = await request.json();
-    const { name, email, phone, course } = body;
+    const { name, email, phone, city, college, university } = body;
 
     // Validate required fields
-    if (!name || !email || !phone || !course) {
+    if (!name || !email || !phone || !city || !college || !university) {
       return NextResponse.json(
         { success: false, message: 'All fields are required' },
         { status: 400 }
@@ -36,7 +36,9 @@ export async function POST(request: Request) {
         {
           name,
           phone,
-          course,
+          city,
+          college,
+          university,
           paymentStatus: 'pending',
           updatedAt: new Date(),
         },
@@ -49,7 +51,9 @@ export async function POST(request: Request) {
         name,
         email,
         phone,
-        course,
+        city,
+        college,
+        university,
         paymentStatus: 'pending',
         emailSent: false,
       });
@@ -59,7 +63,7 @@ export async function POST(request: Request) {
     console.log('📧 Sending confirmation email...');
     
     // Fire-and-forget email sending
-    sendConfirmationEmail(user.name, user.email, user.course, user._id.toString())
+    sendConfirmationEmail(user.name, user.email, user.city, user.college, user.university, user._id.toString())
       .then((result) => {
         console.log('✅ Email sent successfully:', result);
       })
@@ -102,7 +106,7 @@ export async function POST(request: Request) {
 /**
  * Send confirmation email to user
  */
-async function sendConfirmationEmail(name: string, email: string, course: string, userId: string) {
+async function sendConfirmationEmail(name: string, email: string, city: string, college: string, university: string, userId: string) {
   try {
     // Check if email credentials are configured
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
@@ -133,16 +137,8 @@ async function sendConfirmationEmail(name: string, email: string, course: string
     // Get payment link from environment variable
     const paymentLink = process.env.PAYMENT_LINK || 'https://nielitpatnaonline.in/hiprotech/';
 
-    // Course display name
-    const courseNames: { [key: string]: string } = {
-      'online-only': '30-Day Online Robotics & Drones Training',
-      'online-bootcamp': '30-Day Online + 3-Day Hands-on Workshop at NIELIT Patna',
-      'bootcamp-only': '3-Day Hands-on Workshop Only (at NIELIT Patna)',
-    };
-    const courseName = courseNames[course] || course;
-
     // Email HTML template
-    const emailHTML = generateEmailHTML(name, email, courseName, paymentLink);
+    const emailHTML = generateEmailHTML(name, email, city, college, university, paymentLink);
 
     // Email options
     const mailOptions = {
@@ -153,7 +149,7 @@ async function sendConfirmationEmail(name: string, email: string, course: string
       to: email,
       subject: '🎉 Welcome to HiProTech - Robotics & Drones Training Registration Confirmed',
       html: emailHTML,
-      text: generateEmailText(name, email, courseName, paymentLink),
+      text: generateEmailText(name, email, city, college, university, paymentLink),
     };
 
     // Send email
@@ -190,7 +186,7 @@ async function sendConfirmationEmail(name: string, email: string, course: string
 /**
  * Generate email HTML template
  */
-function generateEmailHTML(name: string, email: string, courseName: string, paymentLink: string): string {
+function generateEmailHTML(name: string, email: string, city: string, college: string, university: string, paymentLink: string): string {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -430,8 +426,10 @@ function generateEmailHTML(name: string, email: string, courseName: string, paym
       </p>
       
       <div class="course-badge">
-        <h3>📚 Your Selected Program</h3>
-        <p>${courseName}</p>
+        <h3>📚 Your Registration Details</h3>
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>College:</strong> ${college}</p>
+        <p><strong>University:</strong> ${university}</p>
       </div>
       
       <div class="info-box">
@@ -516,14 +514,17 @@ function generateEmailHTML(name: string, email: string, courseName: string, paym
 /**
  * Generate email plain text template
  */
-function generateEmailText(name: string, email: string, courseName: string, paymentLink: string): string {
+function generateEmailText(name: string, email: string, city: string, college: string, university: string, paymentLink: string): string {
   return `Dear ${name},
 
 Congratulations and welcome to HiProTech - Advanced Robotics & Drones Training program in collaboration with NIELIT Patna!
 
 Your registration has been successfully confirmed. We are excited to have you join our community of learners and future robotics & drone technology professionals.
 
-Your Selected Program: ${courseName}
+Your Registration Details:
+- City: ${city}
+- College: ${college}
+- University: ${university}
 
 NEXT STEPS:
 1. Click the link below to access the program portal

@@ -12,7 +12,9 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
     name: '',
     email: '',
     phone: '',
-    course: '',
+    city: '',
+    college: '',
+    university: '',
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,7 +35,7 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
     setErrorMessage('');
 
     // Validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.course) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.city || !formData.college || !formData.university) {
       setErrorMessage('Please fill in all fields');
       setIsSubmitting(false);
       setSubmitStatus('error');
@@ -71,13 +73,15 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', course: '' });
+        setFormData({ name: '', email: '', phone: '', city: '', college: '', university: '' });
         
-        // Close modal after 3 seconds
+        // Close modal and redirect to external payment link
         setTimeout(() => {
           onClose();
           setSubmitStatus('idle');
-        }, 3000);
+          // Redirect to the external payment/enrollment link
+          window.open('https://nielitpatnaonline.in/hiprotech/', '_blank');
+        }, 2000);
       } else {
         setSubmitStatus('error');
         setErrorMessage(data.message || 'Registration failed. Please try again.');
@@ -137,7 +141,7 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
                 <span className="text-2xl mr-3">✅</span>
                 <div>
                   <p className="font-semibold text-green-800">Registration Successful!</p>
-                  <p className="text-sm text-green-700">Check your email for enrollment instructions and program access link.</p>
+                  <p className="text-sm text-green-700">Redirecting to enrollment page in 2 seconds...</p>
                 </div>
               </div>
             </div>
@@ -207,30 +211,61 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
             />
           </div>
 
-          {/* Course Selection */}
+          {/* City */}
           <div>
-            <label htmlFor="course" className="block text-sm font-semibold text-gray-700 mb-2">
-              Select Course <span className="text-red-500">*</span>
+            <label htmlFor="city" className="block text-sm font-semibold text-gray-700 mb-2">
+              City <span className="text-red-500">*</span>
             </label>
-            <select
-              id="course"
-              name="course"
-              value={formData.course}
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={formData.city}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all duration-200 bg-white text-gray-900"
-            >
-              <option value="" className="text-gray-500">-- Select a course --</option>
-              <option value="online-only" className="text-gray-900">30-Day Online Robotics & Drones Training</option>
-              <option value="online-bootcamp" className="text-gray-900">30-Day Online + 3-Day Hands-on Workshop at NIELIT Patna</option>
-              <option value="bootcamp-only" className="text-gray-900">3-Day Hands-on Workshop Only (at NIELIT Patna)</option>
-            </select>
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all duration-200 text-gray-900 placeholder-gray-400"
+              placeholder="Enter your city"
+            />
+          </div>
+
+          {/* College */}
+          <div>
+            <label htmlFor="college" className="block text-sm font-semibold text-gray-700 mb-2">
+              College <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="college"
+              name="college"
+              value={formData.college}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all duration-200 text-gray-900 placeholder-gray-400"
+              placeholder="Enter your college name"
+            />
+          </div>
+
+          {/* University */}
+          <div>
+            <label htmlFor="university" className="block text-sm font-semibold text-gray-700 mb-2">
+              University <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="university"
+              name="university"
+              value={formData.university}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all duration-200 text-gray-900 placeholder-gray-400"
+              placeholder="Enter your university name"
+            />
           </div>
 
           {/* Info Box */}
           <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
             <p className="text-sm text-orange-800">
-              <strong>📧 Note:</strong> After submission, you'll receive program details and enrollment link via email within 5 minutes.
+              <strong>📧 Note:</strong> After submission, you'll be automatically redirected to the enrollment page.
             </p>
           </div>
 
