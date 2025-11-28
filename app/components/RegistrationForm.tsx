@@ -75,12 +75,12 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phone: '', city: '', college: '', university: '' });
         
-        // Close modal and redirect to external payment link
+        // Close modal and redirect to external payment link in same window
         setTimeout(() => {
           onClose();
           setSubmitStatus('idle');
           // Redirect to the external payment/enrollment link
-          window.open('https://nielitpatnaonline.in/hiprotech/', '_blank');
+          window.location.href = 'https://nielitpatnaonline.in/hiprotech/';
         }, 2000);
       } else {
         setSubmitStatus('error');
@@ -265,7 +265,7 @@ export default function RegistrationForm({ isOpen, onClose }: RegistrationFormPr
           {/* Info Box */}
           <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
             <p className="text-sm text-orange-800">
-              <strong>📧 Note:</strong> After submission, you'll be automatically redirected to the enrollment page.
+              <strong>📧 Note:</strong> After successful registration, you'll be automatically redirected to the enrollment and payment page. Please check your email for confirmation details.
             </p>
           </div>
 
