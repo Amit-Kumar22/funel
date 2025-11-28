@@ -74,7 +74,7 @@ export default function BenefitsSection() {
           {/* Image Section */}
           <div className="order-1 lg:order-2 relative h-[300px] lg:h-[400px] rounded-xl overflow-hidden shadow-xl">
             <Image
-              src="/2.jpg"
+              src="/6.jpg"
               alt="Benefits of Robotics Training Program"
               fill
               className="object-cover"
