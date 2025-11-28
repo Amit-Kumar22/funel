@@ -92,20 +92,20 @@ export default function BenefitsSection() {
         {/* Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-1">100+</div>
-            <div className="text-gray-600 font-medium text-sm">Hands-On Projects</div>
+            <div className="text-3xl font-bold text-orange-600 mb-1"></div>
+            <div className="text-gray-600 font-medium text-sm"></div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-1">50+</div>
-            <div className="text-gray-600 font-medium text-sm">Hours Training</div>
+            <div className="text-3xl font-bold text-orange-600 mb-1"></div>
+            <div className="text-gray-600 font-medium text-sm"></div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-1">15+</div>
-            <div className="text-gray-600 font-medium text-sm">Expert Mentors</div>
+            <div className="text-3xl font-bold text-orange-600 mb-1"></div>
+            <div className="text-gray-600 font-medium text-sm"></div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-1">500+</div>
-            <div className="text-gray-600 font-medium text-sm">Alumni Network</div>
+            <div className="text-3xl font-bold text-orange-600 mb-1"></div>
+            <div className="text-gray-600 font-medium text-sm"></div>
           </div>
         </div>
       </div>

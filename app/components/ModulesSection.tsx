@@ -106,7 +106,7 @@ export default function ModulesSection() {
             {/* Robotics Image */}
             <div className="relative h-[300px] rounded-xl overflow-hidden shadow-xl">
               <Image
-                src="/3.JPG"
+                src="/5.JPG"
                 alt="Robotics Training Program"
                 fill
                 className="object-cover"

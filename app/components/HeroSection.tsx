@@ -24,15 +24,15 @@ export default function HeroSection() {
           <div className="text-left">
             {/* Main Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in-up">
-              Applied Data Science & Machine Intelligence:
+             90 Hours Certification course Robotics & Drone Technology NIELIT Patna Center
               <span className="block text-2xl sm:text-3xl md:text-4xl mt-2">
-                Fundamentals to Next Generation AI
+              
               </span>
             </h1>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-gray-700 mb-8 animate-fade-in-up animation-delay-200 max-w-2xl">
-              Master cutting-edge AI technologies with experts from IIT Kanpur and Industry Speakers. Build real-world projects and accelerate your career in artificial intelligence and machine learning with hands-on education.
+             Gain hands-on experience in Robotics & Drone Technology with this 90-hour certified course by NIELIT Patna, focused on practical skills, live projects, and industry-ready training.
             </p>
 
             {/* Course Tags */}

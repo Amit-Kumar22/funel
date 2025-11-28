@@ -31,15 +31,15 @@ export default function RegistrationSteps() {
             <ul className="space-y-2 text-gray-700 text-sm">
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">✓</span>
-                <span><strong>Course Duration:</strong> 30-Day Online Course + 3-Day Bootcamp (Optional)</span>
+                <span><strong>Course Duration:</strong> 90-Hours</span>
               </li>
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">✓</span>
-                <span><strong>Starting Date:</strong> 15th November 2025</span>
+                <span><strong>Starting Date:</strong> Pending</span>
               </li>
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">✓</span>
-                <span><strong>Location:</strong> IIT Kanpur (Bootcamp)</span>
+                <span><strong>Location:</strong> NIELIT Patna</span>
               </li>
               <li className="flex items-start">
                 <span className="text-orange-500 mr-2">✓</span>
